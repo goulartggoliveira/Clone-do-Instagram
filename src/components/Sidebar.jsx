@@ -3,7 +3,11 @@ import Usuario from "./Usuario";
 export default function Sidebar() {
   return (
     <div class="sidebar">
-      <Usuario />
+      <Usuario
+        imagem={"assets/img/catanacomics.svg"}
+        nome={"catanacomics"}
+        nick={"Catana"}
+      />
 
       <Sugestoes />
 
