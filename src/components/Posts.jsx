@@ -1,10 +1,30 @@
 import { useState } from "react";
 
 function Post(props) {
+  /* USE STATE DE SALVAR E DAR LIKE */
   const [salvarPost, setSalvarPost] = useState(true);
+  const [like, setLike] = useState(false);
+  const [numeroCurtidas, setNumeroCurtidas] = useState(props.curtidas);
 
   function botaoSalvar() {
     setSalvarPost(!salvarPost);
+  }
+
+  function darLike() {
+    if (!like) {
+      setNumeroCurtidas(numeroCurtidas + 1);
+      setLike(true);
+    } else {
+      setNumeroCurtidas(numeroCurtidas - 1);
+      setLike(false);
+    }
+  }
+
+  function darLikeImagem() {
+    if (!like) {
+      setLike(true);
+      setNumeroCurtidas(numeroCurtidas + 1);
+    }
   }
 
   return (
@@ -19,20 +39,27 @@ function Post(props) {
         </div>
       </div>
 
-      <div class="conteudo">
+      <div onClick={darLikeImagem} class="conteudo">
         <img src={props.conteudo} />
       </div>
 
       <div class="fundo">
         <div class="acoes">
           <div>
-            <ion-icon name="heart-outline"></ion-icon>
+            {like ? (
+              <ion-icon
+                onClick={darLike}
+                class="curtido"
+                name="heart"
+              ></ion-icon>
+            ) : (
+              <ion-icon onClick={darLike} name="heart-outline"></ion-icon>
+            )}
+
             <ion-icon name="chatbubble-outline"></ion-icon>
             <ion-icon name="paper-plane-outline"></ion-icon>
           </div>
           <div>
-            {" "}
-            /* CONDIÇÃO PARA SALVAR O POST */
             {salvarPost ? (
               <ion-icon
                 onClick={botaoSalvar}
@@ -48,7 +75,7 @@ function Post(props) {
           <img src={props.curtidasimg} />
           <div class="texto">
             Curtido por <strong>{props.curtidasnome}</strong> e{" "}
-            <strong>outras {props.curtidas} pessoas</strong>
+            <strong>outras {numeroCurtidas} pessoas</strong>
           </div>
         </div>
       </div>
@@ -64,7 +91,7 @@ export default function Posts() {
       conteudo: "assets/img/gato-telefone.svg",
       curtidasimg: "assets/img/respondeai.svg",
       curtidasnome: "respondeai",
-      curtidas: 101.523,
+      curtidas: 101523,
     },
     {
       usuarioimg: "assets/img/barked.svg",
@@ -72,7 +99,7 @@ export default function Posts() {
       conteudo: "assets/img/dog.svg",
       curtidasimg: "assets/img/adorable_animals.svg",
       curtidasnome: "adorable_animals",
-      curtidas: 99.159,
+      curtidas: 99159,
     },
   ];
 
