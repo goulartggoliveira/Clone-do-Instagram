@@ -39,7 +39,7 @@ function Post(props) {
         </div>
       </div>
 
-      <div onClick={darLikeImagem} class="conteudo">
+      <div onDoubleClick={darLikeImagem} class="conteudo">
         <img src={props.conteudo} />
       </div>
 
