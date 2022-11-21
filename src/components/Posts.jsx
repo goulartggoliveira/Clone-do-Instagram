@@ -31,6 +31,8 @@ function Post(props) {
             <ion-icon name="paper-plane-outline"></ion-icon>
           </div>
           <div>
+            {" "}
+            /* CONDIÇÃO PARA SALVAR O POST */
             {salvarPost ? (
               <ion-icon
                 onClick={botaoSalvar}
