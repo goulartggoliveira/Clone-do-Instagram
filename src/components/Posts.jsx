@@ -1,4 +1,12 @@
+import { useState } from "react";
+
 function Post(props) {
+  const [salvarPost, setSalvarPost] = useState(true);
+
+  function botaoSalvar() {
+    setSalvarPost(!salvarPost);
+  }
+
   return (
     <div class="post">
       <div class="topo">
@@ -23,7 +31,14 @@ function Post(props) {
             <ion-icon name="paper-plane-outline"></ion-icon>
           </div>
           <div>
-            <ion-icon name="bookmark-outline"></ion-icon>
+            {salvarPost ? (
+              <ion-icon
+                onClick={botaoSalvar}
+                name="bookmark-outline"
+              ></ion-icon>
+            ) : (
+              <ion-icon onClick={botaoSalvar} name="bookmark"></ion-icon>
+            )}
           </div>
         </div>
 
