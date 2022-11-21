@@ -15,13 +15,17 @@ export default function Usuario(props) {
   }
 
   return (
-    <div class="usuario">
-      <img onClick={mudaImagem} src={imagemNova} />
+    <div class="usuario" data-test="user">
+      <img onClick={mudaImagem} src={imagemNova} data-test="profile-image" />
       <div class="texto">
         <strong>{props.nome}</strong>
-        <span>
+        <span data-test="name">
           {nick}
-          <ion-icon onClick={mudaNick} name="pencil"></ion-icon>
+          <ion-icon
+            onClick={mudaNick}
+            name="pencil"
+            data-test="edit-name"
+          ></ion-icon>
         </span>
       </div>
     </div>
